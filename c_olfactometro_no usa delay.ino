@@ -29,14 +29,15 @@ void setup()
 }
 
 void loop()
+
 {
-  for (int i = 0; i < 15; 1++);
+  for (int i = 0; i < 15; i++); 
   unsigned long tiempoTranscurrido;
   digitalWrite(valveSole1, HIGH); // Switch valve solenoid 1 ON
   digitalWrite(LED1, HIGH); //Switch LED1 ON
   tiempoTranscurrido = millis()+15000;
-  while (millis () < tiempoTranscurrido) {
-
+  while (millis () < tiempoTranscurrido) 
+  }
   }
      digitalWrite(valveSole1,LOW); // Switch valve Solenoid 1 OFF
      digitalWrite(LED1, LOW);
