@@ -1,31 +1,93 @@
-// CÓDIGO USANDO millis y con LEDs
-// Código para abrir válvulas solenoides durante 10 s
-// Generar vácio por 50 s
-// 2 min de espera antes de que se abra la sigueinte válvula
+/*CÓDIGO USANDO millis
+ Código para abrir válvulas solenoides durante 10 s
+ Generar vácio por 50 s
+ 2 min de espera antes de que se abra la sigueinte válvula
+*/ 
 
-const int valveSole1 = 13;
-const int valveSole2 = 12;
-const int valveSole3 = 11;
-const int valveSole4 = 10;
-const int valveVaccum= 9;
-const int LED1 = 8;
-const int LED2 = 7;
-const int LED3 = 6;
-const int LED4 = 5;
-const int LED5 = 4;
+// Pines para las válvulas 
+const int Solenoid1 = 13;
+const int Solenoid2 = 12;
+const int Solenoid3 = 11;
+const int Solenoid4 = 10;
+const int ValveVaccum = 9;
+const int ValveP- = 8;
+const int ValveP+ = 7; 
 
+// Estados de la máquina de estado 
+
+enum State {
+   INITIALIZE;
+   Wait_To_Start;
+   Oddor_1;
+   End_Oddor_1;
+   Oddor_2;
+   End_Oddor_2;
+   Oddor_3;
+   End_Oddor_3;
+   Oddor_4;
+   End_Oddor4;
+   Wait_TwoMin;
+   Exit;
+
+   /*OPEN_Valve_P+;
+   CLOSE_Valve_P+;
+   OPEN_Valve_P-;
+   CLOSE_Valve_P-;
+   OPEN_Valve_Vaccum;
+   CLOSE_Valve_Vaccum;
+   Wait_For_Next;
+   OPEN_SOLENOID_1;
+   CLOSE_SOLENOID_1;
+   OPEN_SOLENOID_2;
+   CLOSE_SOLENOID_2;
+   OPEN_SOLENOID_3;
+   CLOSE_SOLENOID_3;
+   OPEN_SOLENOID_4;
+   CLOSE_SOLENOID_4;
+   Exit;
+   */
+
+  //Funciones para llamar a los estados 
+  void initializeState ();
+  void waitToStartState ();
+  void odor1 ();
+  void endOdor1 ();
+  void odor2 ();
+  void endOdor ();
+  void odor3 ();
+  void endOdor4 ();
+  void odor ();
+  void waitTwoMin ();
+}
+
+// Variable para almacenar el estado actual 
+State currentState = INIT;
 void setup()
 {
-  pinMode(valveSole1, OUTPUT);
-  pinMode(valveSole2, OUTPUT);
-  pinMode(valveSole3, OUTPUT);
-  pinMode(valveSole4, OUTPUT);
-  pinMode(valveVaccum, OUTPUT);
-  pinMode(LED1, OUTPUT);
-  pinMode(LED2, OUTPUT);
-  pinMode(LED3, OUTPUT);
-  pinMode(LED4, OUTPUT);
-  pinMode(LED5, OUTPUT);
+   // Se indican los pines de las válvulas solenoides como salidas 
+  pinMode(Solenoid1, OUTPUT);
+  pinMode(Solenoid2, OUTPUT);
+  pinMode(Solenoid3, OUTPUT);
+  pinMode(Solenoid4, OUTPUT);
+  pinMode(ValveVaccum, OUTPUT);
+  pinMode(ValveP-, OUTPUT);
+  pinMode(ValveP+, OUTPUT);
+
+// En un inicio solo las válvulas P- y P+ estarán abiertas 
+
+switch (expression)
+{
+case /* constant-expression */:
+   /* code */
+   initializeState ();
+   currentState = Oddor_1;
+   digitalWrite(Solenoid1, HIGH);
+   digitalWrite()
+   break;
+
+default:
+   break;
+
 }
 
 void loop()
