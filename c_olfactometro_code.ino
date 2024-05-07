@@ -1,8 +1,13 @@
-/*CÓDIGO USANDO millis
+/*
  Código para abrir válvulas solenoides durante 10 s
  Generar vácio por 50 s
  2 min de espera antes de que se abra la sigueinte válvula
 */ 
+
+
+
+
+/////////Esta parte es para conectar a wifi///////
 
 
 #include <thingProperties.h>  //libreria IoT
@@ -24,27 +29,67 @@ const int ValveVaccum = 9;
 const int ValvePP = 8;
 const int ValvePN = 7; 
 
+
+
 // Estados de la máquina de estado 
 
 enum State {
    IDLE,
+   MESSAGE_START_1,
    ODORANT_1,
    END_ODORANT_1,
    WAIT_INTERST_1,
+   MESSAGE_DONE_1,
+   MESSAGE_START_2,
    ODORANT_2,
    END_ODORANT_2,
    WAIT_INTEREST_2,
+   MESSAGE_DONE_2,
+   MESSAGE_START_3,
    ODORANT_3,
    END_ODORANT_3,
    WAIT_INTEREST_3,
+   MESSAGE_DONE_3,
+   MESSAGE_START_4,
    ODORANT_4,
    END_ODORANT_4,
    WAIT_INTEREST_4,
+   MESSAGE_DONE_4,
    EXIT
 };
 
+QueueArray<int> event_queue;
+
+
+
+  //Eventos que ocurren en los estados 
+
   enum Event {
-   BUTTON_PRESSED,
+  READ_WIFI,
+  SEND_MESSAGE_START_1,
+  BUTTON_PRESSED_1,
+  ODORANT_1_ON,
+  VALVE_VACCUM_ON,
+  INITIAL_SETUP,
+  SEND_MESSAGE_DONE_1,
+  SEND_MESSAGE_START_2,
+  BUTTON_PRESSED_2,
+  ODORANT_2_ON,
+  VALVE_VACCUM_ON,
+  INITIAL_SETUP,
+  SEND_MESSAGE_DONE_2,
+  SEND_MESSAGE_START_3,
+  BUTTON_PRESSED_3,
+  ODORANT_3_ON,
+  VALVE_VACCUM_ON,
+  INITIAL_SETUP,
+  SEND_MESSAGE_DONE_3,
+  SEND_MESSAGE_START_4,
+  BUTTON_PRESSED_4,
+  ODORANT_4_ON,
+  VALVE_VACCUM_ON,
+  INITIAL_SETUP,
+  SEND_MESSAGE_DONE_4,
 
   }
 
@@ -81,50 +126,6 @@ if (buttonState1 == HIGH) {
    handleEvent(BUTTON_PRESSED);
 }
 }
-void handleEvent (Event event) { /* cuando se llama a handleEvent(BUTTON_PRESSED), el valor de BUTTON_PRESSED se pasa como argumento event a la función handleEvent, lo que permite que la función reaccione en consecuencia.*/
-
-switch (currentState) {
-  case IDLE:
-  handleIDLEEvent(event);
-  break;
-  case ODORANT_1:
-  handleODORANT1Event(event);
-  break;
-  case END_ODORANT_1:
-  handleEndOdorant1Event(event);
-  break;
-  case WAIT_INTEREST_1:
-  handleWaitInterst1Event (event);
-  break;
-case ODORANT_2:
-  handleODORANT2Event(event);
-  break;
-  case END_ODORANT_2:
-  handleEndOdorant2Event(event);
-  break;
-  case WAIT_INTERST_2:
-  handleWaitInterst2Event (event);
-  break;
-  case ODORANT_3:
-  handleODORANT3Event(event);
-  break;
-  case END_ODORANT_3:
-  handleEndOdorant3Event(event);
-  break;
-  case WAIT_INTEREST_3:
-  handleWaitInterst3Event (event);
-  break;
-  case ODORANT_4:
-  handleODORANT4Event(event);
-  break;
-  case END_ODORANT_4:
-  handleEndOdorant4Event(event);
-  break;
-  case WAIT_INTEREST_4:
-  handleWaitInterst4Event (event);
-  break;
-}
-} 
 
 void handleIDLEEvent(Event event) {
  if (event == BUTTON_PRESSED1) {
@@ -186,9 +187,6 @@ void handleWaitInterest1Event(Event event) {
    }
    }
 }
-
-
-
 
 
 
