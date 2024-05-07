@@ -4,6 +4,17 @@
  2 min de espera antes de que se abra la sigueinte válvula
 */ 
 
+
+#include <thingProperties.h>  //libreria IoT
+// Defined in thingProperties.h
+iniProperties ();
+// Connect to Arduino IoT Cloud
+ArduinoCloud.beging(ArduinoIoTPreferredConnection);
+
+setDebugMessageLevel1(2);
+ArduinoCloud.printDebugInfo();
+
+
 // Pines para las válvulas 
 const int Solenoid1 = 13;
 const int Solenoid2 = 12;
@@ -36,6 +47,13 @@ enum State {
    BUTTON_PRESSED,
 
   }
+
+const chart button_Pressed [] = ;
+const chart Done [] = ;
+    
+    String anuncio = "Done";
+    ArduinoCloud.println(anuncio);
+
 
    // Se indican los pines de las válvulas solenoides como salidas 
   pinMode(Solenoid1, OUTPUT);
