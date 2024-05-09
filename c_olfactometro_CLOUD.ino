@@ -1,13 +1,4 @@
-/*
- Código para abrir válvulas solenoides durante 10 s
- Generar vácio por 50 s
- 2 min de espera antes de que se abra la sigueinte válvula
-*/ 
-
-
-
-
-/////////Esta parte es para conectar a wifi///////
+-/////////Esta parte es para conectar a wifi///////
 
 #include <ArduinoCloud.h>
 #include <thingProperties.h>  //libreria IoT
@@ -118,8 +109,6 @@ void setup()
 unsigned long startTime;
 unsigned long duration;
 
-
-
 void onButtonChage ()
 int buttonState1 = digitalRead(buttonPin1); //revisar en donde se va a conectar
 
@@ -191,118 +180,3 @@ void handleWaitInterest1Event(Event event) {
    }
    }
 }
-
-
-
-/*case initializeState ();
-   currentState = Oddor_1;
-   digitalWrite(ValveP-, LOW);
-   digitalWrite(ValveP+, LOW);
-   digitalWrite(Solenoid1, LOW);
-   digitalWrite(Solenoid1, LOW);
-   digitalWrite(Solenoid2, LOW);
-   digitalWrite(Solenoid3, LOW);
-   digitalWrite(Solenoid4, LOW);
-   digitalWrite(ValveVaccum, LOW);
-   break;
-
-default:
-   break;
-
-}
-
-void loop()
-
-{
-  for (int i = 0; i < 15; i++); 
-  unsigned long tiempoTranscurrido;
-  digitalWrite(valveSole1, HIGH); // Switch valve solenoid 1 ON
-  digitalWrite(LED1, HIGH); //Switch LED1 ON
-  tiempoTranscurrido = millis()+15000;
-  while (millis () < tiempoTranscurrido) 
-  }
-  }
-     digitalWrite(valveSole1,LOW); // Switch valve Solenoid 1 OFF
-    
-
-     digitalWrite(valveVaccum, HIGH);
-   
-     tiempoTranscurrido = millis() + 50000;
-     while (millis() < tiempoTranscurrido) {
-
-     }
-     digitalWrite(valveVaccum, LOW);
-   
-
-     tiempoTranscurrido= millis() + 120000;
-     while (millis() < tiempoTranscurrido) {
-
-     }
-     digitalWrite(valveSole2, HIGH); // Switch valve solenoid 2 ON
-    
-     tiempoTranscurrido = millis()+15000;
-     while (millis () < tiempoTranscurrido) {
-
-  }
-     digitalWrite(valveSole2,LOW); // Switch valve Solenoid 2 OFF
-    
-
-     digitalWrite(valveVaccum, HIGH);
-
-     tiempoTranscurrido = millis() + 50000;
-     while (millis() < tiempoTranscurrido) {
-
-     }
-     digitalWrite(valveVaccum, LOW);
-   
-
-     tiempoTranscurrido= millis() + 120000;
-     while (millis() < tiempoTranscurrido) {
-      
-     }
-     digitalWrite(valveSole3, HIGH); // Switch valve solenoid 3 ON
-    
-     tiempoTranscurrido = millis()+15000;
-     while (millis () < tiempoTranscurrido) {
-
-  }
-     digitalWrite(valveSole3,LOW); // Switch valve Solenoid 3 OFF
-  
-
-     digitalWrite(valveVaccum, HIGH);
-   
-     tiempoTranscurrido = millis() + 50000;
-     while (millis() < tiempoTranscurrido) {
-
-     }
-     digitalWrite(valveVaccum, LOW);
-  
-
-     tiempoTranscurrido= millis() + 120000;
-     while (millis() < tiempoTranscurrido) {
-
-     }
-     digitalWrite(valveSole4, HIGH); // Switch valve solenoid 4 ON
-
-     tiempoTranscurrido = millis()+15000;
-     while (millis () < tiempoTranscurrido) {
-
-  }
-     digitalWrite(valveSole4,LOW); // Switch valve Solenoid 4 OFF
- 
-
-     digitalWrite(valveVaccum, HIGH);
-   
-     tiempoTranscurrido = millis() + 50000;
-     while (millis() < tiempoTranscurrido) {
-
-     }
-     digitalWrite(valveVaccum, LOW);
- 
-
-     tiempoTranscurrido= millis() + 120000;
-     while (millis() < tiempoTranscurrido) {
-
-     */
-  
-  
