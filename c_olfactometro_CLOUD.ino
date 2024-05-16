@@ -1,6 +1,6 @@
 -/////////Esta parte es para conectar a wifi///////
 
-#include <ArduinoCloud.h>
+#include <ArduinoCloud.h>cloud
 #include <thingProperties.h>  //libreria IoT
 // Defined in thingProperties.h
 iniProperties ();
@@ -28,69 +28,22 @@ const int ValvePN = 7;
 
 enum State {
    IDLE,
-   MESSAGE_START_1,
-   ODORANT_1,
-   END_ODORANT_1,
-   WAIT_INTERST_1,
-   MESSAGE_DONE_1,
-   MESSAGE_START_2,
-   ODORANT_2,
-   END_ODORANT_2,
-   WAIT_INTEREST_2,
-   MESSAGE_DONE_2,
-   MESSAGE_START_3,
-   ODORANT_3,
-   END_ODORANT_3,
-   WAIT_INTEREST_3,
-   MESSAGE_DONE_3,
-   MESSAGE_START_4,
-   ODORANT_4,
-   END_ODORANT_4,
-   WAIT_INTEREST_4,
-   MESSAGE_DONE_4,
-   EXIT
+   START,
+   ODOR_RELEASE,
+   VACCUM_ON
 };
-
 
 QueueArray<int> event_queue;
 
   //Eventos que ocurren en los estados 
 
   enum Event {
-  READ_WIFI,
-  SEND_MESSAGE_START_1,
-  BUTTON_PRESSED_1,
-  ODORANT_1_ON,
-  VALVE_VACCUM_ON,
   INITIAL_SETUP,
-  SEND_MESSAGE_DONE_1,
-  SEND_MESSAGE_START_2,
-  BUTTON_PRESSED_2,
-  ODORANT_2_ON,
+  BUTTON_LIMONENO,
+  BUTTON_ACETATO_DE_AMILO,
+  BUTTON_BUTIRATO_DE_ETILO,
   VALVE_VACCUM_ON,
-  INITIAL_SETUP,
-  SEND_MESSAGE_DONE_2,
-  SEND_MESSAGE_START_3,
-  BUTTON_PRESSED_3,
-  ODORANT_3_ON,
-  VALVE_VACCUM_ON,
-  INITIAL_SETUP,
-  SEND_MESSAGE_DONE_3,
-  SEND_MESSAGE_START_4,
-  BUTTON_PRESSED_4,
-  ODORANT_4_ON,
-  VALVE_VACCUM_ON,
-  INITIAL_SETUP,
-  SEND_MESSAGE_DONE_4,
-
   }
-
-const chart button_Pressed [] = ;
-const chart Done [] = ;
-    
-    String anuncio = "Done";
-    ArduinoCloud.println(anuncio);
-
 
    // Se indican los pines de las válvulas solenoides como salidas 
   pinMode(Solenoid1, OUTPUT);
@@ -100,29 +53,22 @@ const chart Done [] = ;
   pinMode(ValveVaccum, OUTPUT);
   pinMode(ValvePP, OUTPUT);
   pinMode(ValvePN, OUTPUT);
-}
 
- 
-State currentState = IDLE; // Variable para almacenar el estado actual
+//Global variables
+unsigned long timeToOdor; // Variable para almacenar el tiempo de incio del odorante
+unsigned long timeToVaccum // Variable para almacenar el tiempo de generar vácio
+unsigned long timeToInterstimuli // Variable para almacenar el tiempo de interestímulo 
+const unsigned long durationOfOdor = 10000; // Duración en milisegundos (10 segundos)
+const unsigned long durationOfVaccum = 50000; // Duración en milisegundos (50 segundos)
+const unsigned long durationOfInterstimuli = 120000; // Duración en milisegundos (2 minutos)
+
 void setup()
-{
-unsigned long startTime;
-unsigned long duration;
-
-void onButtonChage ()
-int buttonState1 = digitalRead(buttonPin1); //revisar en donde se va a conectar
-
-if (buttonState1 == HIGH) {
-   handleEvent(BUTTON_PRESSED);
-}
-}
-
 
 //Director 
 
 handleEvent(Event);  
- if (event == BUTTON_PRESSED1) {
-   currentState = ODORANT_1;
+ if (event == INITIAL_SETUP) {
+   event_queue.enqueue (START)
    startTime = millis ();
    digitalWrite(ValvePP, LOW);
    digitalWrite(ValvePN, LOW);
@@ -132,8 +78,12 @@ handleEvent(Event);
    digitalWrite(Solenoid3, LOW);
    digitalWrite(Solenoid4, LOW);  
  }
-}
 
+// Event Handler
+
+while (!event_queue.isEmpty()){
+   Event currentEvent = event_queue.dequeue();
+}
 void handleOdorant1Event (Event event) {
    if (event == BUTTON_PRESSED) {
       duration = 10000;
