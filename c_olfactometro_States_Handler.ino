@@ -4,6 +4,90 @@ void handleEvent (Event event) { /* cuando se llama a handleEvent(BUTTON_PRESSED
     switch (currentState) { 
 
         case IDLE:
+        if (event == INITIAL_SETUP) {
+            currentState = START;
+             initialSetup();
+        }
+    break;
+  case START:
+    if (event == INITIAL_SETUP) {
+        currentState = ODOR_RELEASE;
+       buttonLimonenoPressed();
+ }
+    break;
+  case : ODOR_RELEASE:
+    if (event == BUTTON_LIMONENO_PRESSED) {
+        currentState =  VACCUM_ON;
+       valveVaccumOn();
+}
+     break;
+  case VACCUM_ON:
+    if (event == VACCUM_ON) {
+        currentState = WAIT_INTERSTIMULUS;
+       waitInterStimulus();
+}
+  break;
+case WAIT_INTERSTIMULUS:
+    if (event == WAIT_INTERSTIMULUS) {
+        currentState = START
+        initialSetup();
+}
+    break;
+ case START:
+    if (event == INITIAL_SETUP) {
+        currentState = ODOR_RELEASE;
+       buttonAcetatoDeAmiloPressed();
+ }
+    break;
+  case : ODOR_RELEASE:
+    if (event ==  BUTTON_ACETATO_DE_AMILO_PRESSED) {
+        currentState =  VACCUM_ON;
+       valveVaccumOn();
+}
+     break;
+  case VACCUM_ON:
+    if (event == VACCUM_ON) {
+        currentState = WAIT_INTERSTIMULUS;
+       waitInterStimulus();
+}
+  break;
+case WAIT_INTERSTIMULUS:
+    if (event == WAIT_INTERSTIMULUS) {
+        currentState = START
+        initialSetup();
+}
+    break; 
+ case START:
+    if (event == INITIAL_SETUP) {
+        currentState = ODOR_RELEASE;
+       buttonButiratoDeEtiloPressed();
+ }
+    break;
+  case : ODOR_RELEASE:
+    if (event ==  BUTTON_BUTIRATO_DE_ETILO_PRESSED) {
+        currentState =  VACCUM_ON;
+       valveVaccumOn();
+}
+     break;
+  case VACCUM_ON:
+    if (event == VACCUM_ON) {
+        currentState = WAIT_INTERSTIMULUS;
+       waitInterStimulus();
+}
+  break;
+case WAIT_INTERSTIMULUS:
+    if (event == WAIT_INTERSTIMULUS) {
+        currentState = START
+        initialSetup(); 
+  break;
+}
+} 
+
+
+//void handleEvent (Event event) { /* cuando se llama a handleEvent(BUTTON_PRESSED), el valor de BUTTON_PRESSED se pasa como argumento event a la función handleEvent, lo que permite que la función reaccione en consecuencia.*/
+    switch (currentState) { 
+
+        case IDLE:
         if (event == READ_WIFI) {
             currentState = MESSAGE_START_1;
              fcnSendMessageStart1();
