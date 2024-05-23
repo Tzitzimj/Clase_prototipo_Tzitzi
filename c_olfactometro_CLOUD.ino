@@ -10,6 +10,8 @@ const int ValvePN = 7;
 
 /////////////////////// L I B R A R I E S ////////////////////////////
 #include <QueueArray.h>
+#include <Arduino.h>
+
 
 
 // Estados de la máquina de estado 
@@ -32,25 +34,24 @@ QueueArray<int> event_queue;
   VALVE_VACCUM_ON,
   WAIT_INTERSTIMULUS,
   }
+void setup() {
 
    // Se indican los pines de las válvulas solenoides como salidas 
   pinMode(Solenoid1, OUTPUT);
   pinMode(Solenoid2, OUTPUT);
   pinMode(Solenoid3, OUTPUT);
-  pinMode(Solenoid4, OUTPUT);
   pinMode(ValveVaccum, OUTPUT);
   pinMode(ValvePP, OUTPUT);
   pinMode(ValvePN, OUTPUT);
 
 //Global variables
 unsigned long timeToOdor; // Variable para almacenar el tiempo de incio del odorante
-unsigned long timeToVaccum // Variable para almacenar el tiempo de generar vácio
-unsigned long timeToInterstimulus // Variable para almacenar el tiempo de interestímulo 
+unsigned long timeToVaccum; // Variable para almacenar el tiempo de generar vácio
+unsigned long timeToInterstimulus; // Variable para almacenar el tiempo de interestímulo 
 const unsigned long durationOfOdor = 10000; // Duración en milisegundos (10 segundos)
 const unsigned long durationOfVaccum = 50000; // Duración en milisegundos (50 segundos)
 const unsigned long durationOfInterstimulus = 120000; // Duración en milisegundos (2 minutos)
 
-void setup() {
     // Initialize serial and wait for port to open:
   Serial.begin(9600);
   // This delay gives the chance to wait for a Serial Monitor without blocking if none is found
@@ -75,9 +76,8 @@ void setup() {
 
 void loop() {
   ArduinoCloud.update();
-  // Your code here 
-  
-  
+  // nothing here 
+
 }
 
 //Director 

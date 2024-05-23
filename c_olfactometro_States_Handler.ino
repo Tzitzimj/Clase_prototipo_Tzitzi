@@ -2,7 +2,6 @@
 
 void handleEvent (Event event) { /* cuando se llama a handleEvent(BUTTON_PRESSED), el valor de BUTTON_PRESSED se pasa como argumento event a la función handleEvent, lo que permite que la función reaccione en consecuencia.*/
     switch (currentState) { 
-
         case IDLE:
         if (event == INITIAL_SETUP) {
             currentState = START;
@@ -85,7 +84,7 @@ case WAIT_INTERSTIMULUS:
 
 
 //void handleEvent (Event event) { /* cuando se llama a handleEvent(BUTTON_PRESSED), el valor de BUTTON_PRESSED se pasa como argumento event a la función handleEvent, lo que permite que la función reaccione en consecuencia.*/
-    switch (currentState) { 
+   /* switch (currentState) { 
 
         case IDLE:
         if (event == READ_WIFI) {
@@ -126,7 +125,7 @@ case WAIT_INTERST_1:
  
 }
 } 
-
+*/
 /*void handleIDLEEvent(Event event) {
  if (event == BUTTON_PRESSED1) {
    currentState = ODORANT_1;
