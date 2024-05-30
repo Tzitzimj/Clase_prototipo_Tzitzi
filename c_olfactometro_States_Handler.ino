@@ -1,4 +1,3 @@
-#include "c_olfactometro_code.ino"
 
 void handleEvent (Event event) { /* cuando se llama a handleEvent(BUTTON_PRESSED), el valor de BUTTON_PRESSED se pasa como argumento event a la función handleEvent, lo que permite que la función reaccione en consecuencia.*/
     switch (currentState) { 

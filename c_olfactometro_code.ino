@@ -9,7 +9,7 @@
 
 /////////Esta parte es para conectar a wifi///////
 
-#include <ArduinoCloud.h>
+#include <ArduinoIoTCloud.h>
 #include <thingProperties.h>  //libreria IoT
 // Defined in thingProperties.h
 iniProperties ();
